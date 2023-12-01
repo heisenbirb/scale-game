@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://y5y2srf5ylk8"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ie6a4"]
+[ext_resource type="Texture2D" uid="uid://b7jqitouom3al" path="res://icon.svg" id="2_fhtp6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7j66c"]
+friction = 0.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr5vd"]
+radius = 60.5
+height = 129.0
+
+[node name="nonscaleableplayer" type="RigidBody2D" groups=["player"]]
+collision_layer = 131
+collision_mask = 131
+physics_material_override = SubResource("PhysicsMaterial_7j66c")
+script = ExtResource("1_ie6a4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("CapsuleShape2D_cr5vd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fhtp6")

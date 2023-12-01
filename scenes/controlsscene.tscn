@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://btuwhkio1kaiu"]
+
+[ext_resource type="Script" path="res://scenes/controlsscene.gd" id="1_cqe3t"]
+
+[node name="controlsscene" type="Node2D"]
+script = ExtResource("1_cqe3t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 128
+text = "Controls:
+ - WASD To Move
+ - Click to Select Object
+ - +/- To scale selection
+(Or =/-)"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 128
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

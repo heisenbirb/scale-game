@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://c57x02060o883"]
+
+[ext_resource type="TileSet" uid="uid://bhbjv6jk486h3" path="res://Assets/betatileset.tres" id="1_f2v0n"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_x1062"]
+[ext_resource type="PackedScene" uid="uid://dnctsyqv7wtii" path="res://scenes/scaleable_tile.tscn" id="2_dj3xa"]
+[ext_resource type="PackedScene" uid="uid://43v60bkqg8w5" path="res://scenes/button.tscn" id="3_ry03e"]
+[ext_resource type="PackedScene" uid="uid://dsi5j2r0j2jci" path="res://scenes/moving_platform.tscn" id="4_cki4p"]
+[ext_resource type="PackedScene" uid="uid://b3eai5051jd3p" path="res://scenes/Goal.tscn" id="5_3yb3o"]
+[ext_resource type="PackedScene" uid="uid://y5y2srf5ylk8" path="res://scenes/nonscaleableplayer.tscn" id="6_yc4j4"]
+
+[node name="level3" type="Node2D"]
+script = ExtResource("1_x1062")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_f2v0n")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 393216, 0, 65536, 393216, 0, 131072, 393216, 0, 196608, 393216, 0, 262144, 393216, 0, 327680, 393216, 0, 393216, 393216, 0, 458752, 393216, 0, 524288, 393216, 0, 589824, 393216, 0, 655360, 393216, 0, 720896, 393216, 0, 786432, 393216, 0, 851968, 393216, 0, 917504, 393216, 0, 983040, 393216, 0, 1048576, 393216, 0, 1114112, 393216, 0, 1179648, 393216, 0, 1245184, 393216, 0, 1310720, 393216, 0, 1376256, 393216, 0, 1441792, 393216, 0, 1441825, 393216, 0, 1441824, 393216, 0, 1441823, 393216, 0, 1441822, 393216, 0, 1441821, 393216, 0, 1441820, 393216, 0, 1441819, 393216, 0, 1441818, 393216, 0, 1441817, 393216, 0, 1441816, 393216, 0, 1441815, 393216, 0, 1441814, 393216, 0, 1441813, 393216, 0, 1441812, 393216, 0, 1441811, 393216, 0, 1441810, 393216, 0, 1441809, 393216, 0, 1441808, 393216, 0, 1441807, 393216, 0, 1441806, 393216, 0, 1441805, 393216, 0, 1441804, 393216, 0, 1441803, 393216, 0, 1441802, 393216, 0, 1441801, 393216, 0, 1441800, 393216, 0, 1441799, 393216, 0, 1441798, 393216, 0, 1441797, 393216, 0, 1441796, 393216, 0, 1441795, 393216, 0, 1441794, 393216, 0, 1441793, 393216, 0, 1, 393216, 0, 2, 393216, 0, 3, 393216, 0, 4, 393216, 0, 5, 393216, 0, 6, 393216, 0, 7, 393216, 0, 8, 393216, 0, 9, 393216, 0, 10, 393216, 0, 11, 393216, 0, 12, 393216, 0, 13, 393216, 0, 14, 393216, 0, 15, 393216, 0, 16, 393216, 0, 17, 393216, 0, 18, 393216, 0, 19, 393216, 0, 20, 393216, 0, 21, 393216, 0, 22, 393216, 0, 23, 393216, 0, 24, 393216, 0, 25, 393216, 0, 26, 393216, 0, 27, 393216, 0, 28, 393216, 0, 29, 393216, 0, 30, 393216, 0, 31, 393216, 0, 32, 393216, 0, 33, 393216, 0, 65569, 393216, 0, 131105, 393216, 0, 196641, 393216, 0, 262177, 393216, 0, 327713, 393216, 0, 393249, 393216, 0, 458785, 393216, 0, 524321, 393216, 0, 589857, 393216, 0, 655393, 393216, 0, 720929, 393216, 0, 786465, 393216, 0, 852001, 393216, 0, 917537, 393216, 0, 983073, 393216, 0, 1048609, 393216, 0, 1114145, 393216, 0, 1179681, 393216, 0, 1245217, 393216, 0, 1310753, 393216, 0, 1376289, 393216, 0, 524320, 393216, 0, 524319, 393216, 0, 524318, 393216, 0, 524317, 393216, 0, 524316, 393216, 0, 524315, 393216, 0, 524314, 393216, 0, 524313, 393216, 0)
+
+[node name="scaleable_tile" parent="." instance=ExtResource("2_dj3xa")]
+position = Vector2(1500, 1300)
+collision_layer = 3
+collision_mask = 3
+
+[node name="button" parent="." instance=ExtResource("3_ry03e")]
+position = Vector2(1700, 1376)
+which_scene_is_getting_powered = "moving_platform"
+
+[node name="moving_platform" parent="." groups=["moving_platform"] instance=ExtResource("4_cki4p")]
+position = Vector2(1650, 300)
+scale = Vector2(1, 10)
+PoweredPos = Vector2(1650, -300)
+speed = 1
+
+[node name="Goal" parent="." instance=ExtResource("5_3yb3o")]
+position = Vector2(1900, 450)
+
+[node name="nonscaleableplayer" parent="." instance=ExtResource("6_yc4j4")]
+position = Vector2(200, 1300)
+
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

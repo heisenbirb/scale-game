@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbw0cwpjrfcge"]
+
+[ext_resource type="Texture2D" uid="uid://xt4q4qu6gljw" path="res://Assets/cube.png" id="1_wj8u0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jtfi0"]
+friction = 0.3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ucuo"]
+size = Vector2(60, 60)
+
+[node name="box" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_jtfi0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5ucuo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wj8u0")

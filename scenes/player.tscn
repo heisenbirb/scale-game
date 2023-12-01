@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxj2gy030iy88"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_s8qvs"]
+[ext_resource type="Texture2D" uid="uid://b7jqitouom3al" path="res://icon.svg" id="1_ybl41"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7j66c"]
+friction = 0.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr5vd"]
+radius = 62.0
+height = 124.0
+
+[node name="player" type="RigidBody2D" groups=["player"]]
+collision_layer = 131
+collision_mask = 131
+physics_material_override = SubResource("PhysicsMaterial_7j66c")
+can_sleep = false
+script = ExtResource("1_s8qvs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cr5vd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ybl41")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -63.0
+offset_top = -63.0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+shortcut_feedback = false
+shortcut_in_tooltip = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

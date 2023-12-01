@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccnhek5vwqg7f"]
+
+[ext_resource type="Script" path="res://rigidbutton.gd" id="1_ymeku"]
+[ext_resource type="Texture2D" uid="uid://0h5wlr4cfsaj" path="res://Assets/button_pressed.png" id="2_ls66w"]
+[ext_resource type="Texture2D" uid="uid://b06olk7bixng8" path="res://Assets/button_unpressed.png" id="3_jt72a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnn86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ls66w")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jt72a")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xj07h"]
+size = Vector2(64, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6joy"]
+size = Vector2(64, 7)
+
+[node name="rigidbutton" type="RigidBody2D" groups=["me"]]
+collision_mask = 128
+script = ExtResource("1_ymeku")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 1)
+sprite_frames = SubResource("SpriteFrames_rnn86")
+animation = &"unpressed"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 22.5)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_xj07h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 28.5)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_x6joy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
